@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
     dashboard = Typus.subdomain ? "/dashboard" : "/admin/dashboard"
 
-    match "/" => redirect(dashboard)
-    match "dashboard" => "dashboard#index", :as => "dashboard_index"
-    match "dashboard/:application" => "dashboard#show", :as => "dashboard"
+    get "/" => redirect(dashboard)
+    get "dashboard" => "dashboard#index", :as => "dashboard_index"
+    get "dashboard/:application" => "dashboard#show", :as => "dashboard"
 
     if Typus.authentication == :session
       resource :session, :only => [:new, :create], :controller => :session do
