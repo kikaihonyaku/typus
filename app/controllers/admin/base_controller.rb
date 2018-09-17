@@ -30,7 +30,11 @@ class Admin::BaseController < ActionController::Base
   end
 
   def zero_users
-    Typus.user_class.count.zero?
+    if Typus.user_class
+      Typus.user_class.count.zero?
+    else
+      true
+    end
   end
 
   def not_allowed(reason = 'Not allowed!')
